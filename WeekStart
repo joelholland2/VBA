@@ -1,0 +1,3 @@
+Public Function WeekStart(runday As Date) AS Date
+  WeekStart = DateValue(runday - (Weekday(runday, 2) - 1))
+End Function
