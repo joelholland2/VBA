@@ -1,0 +1,32 @@
+Function ShiftAccess(OnOff As Boolean)
+
+On Error GoTo errEnableShift
+
+    Dim db As DAO.Database
+    Dim prop As DAO.Property
+    Const conPropNotFound = 3270
+
+    Set db = CurrentDb()
+
+    db.Properties("AllowByPassKey") = OnOff
+
+    GoTo ExitHere
+
+errEnableShift:
+    
+    If Err = conPropNotFound Then
+        Set prop = db.CreateProperty("AllowByPassKey", _
+        dbBoolean, True)
+        db.Properties.Append prop
+        Resume Next
+        Else
+            MsgBox "Function 'ShiftAccess' did not complete successfully."
+            GoTo ExitHere
+    End If
+
+ExitHere:
+    Set prop = Nothing
+    Set db = Nothing
+    Exit Function
+
+End Function
