@@ -1,0 +1,9 @@
+Public Function FileUpdated(Folder Path as string, FileSpec as string) As Boolean
+
+If DateValue(LatestDateInFolder(FolderPath, FileSpec)) < Date Then
+    FileUpdated = False
+Else
+    FileUpdated = True
+End If
+    
+End Function
