@@ -1,0 +1,3 @@
+Public Function MonthStart (EntryDate As Date) As Date
+	MonthStart = DateSerial(Year(EntryDate), Month(EntryDate), 1)
+End function
