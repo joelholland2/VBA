@@ -1,0 +1,14 @@
+Public Function ReportLoader(strAppUserPath As String)
+
+    Dim exlAppUser As Excel.Application: Set exlAppUser = CreateObject("Excel.Application")
+    With exlAppUser
+        .Workbooks.Open Filename:=strAppUserPath, ReadOnly:=True
+        .Visible = True
+        .DisplayFullScreen = False
+        .WindowState = xlMaximized
+        .UserControl = True
+    End With
+    
+    Application.Quit
+
+End Function
