@@ -1,0 +1,27 @@
+Public Function NewestFile(Directory As String, FileSpec As String) As String
+
+	If Right(Directory, 1) <> "\" Then Directory = Directory & "\"
+
+	Dim FileName As String
+
+		FileName = Dir(Directory & "*" & FileSpec, 0)
+		If FileName <> "" Then
+			
+			Dim MostRecentFile As String
+			MostRecentFile = FileName
+			
+			Dim MostRecentDate As Date
+			MostRecentDate = FileDateTime(Directory & FileName)
+			
+			Do While FileName <> ""
+				If FileDateTime(Directory & FileName) > MostRecentDate Then
+					 MostRecentFile = FileName
+					 MostRecentDate = FileDateTime(Directory & FileName)
+				 End If
+				 FileName = Dir
+			Loop
+		End If
+		
+		NewestFile = Directory & MostRecentFile
+
+End Function
