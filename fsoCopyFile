@@ -1,0 +1,4 @@
+Public Function fsoCopyFile(oldlink As String, newlink As String)
+	Dim fso As Object: Set fso = VBA.CreateObject("Scripting.FileSystemObject")
+	Call fso.CopyFile(oldlink, newlink)
+End Function
