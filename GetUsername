@@ -1,0 +1,8 @@
+Public Function GetUsername() AS String
+
+  Dim objAd AS Object: Set objAD = CreateObject("ADSystemInfo")
+  Dim objUser AS Object: Set objUser = GetObject("LDAP://" & objAD.Username)
+
+  GetUsername = objUser.DisplayName
+
+End Function
